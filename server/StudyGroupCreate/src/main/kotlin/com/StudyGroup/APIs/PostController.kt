@@ -2,18 +2,11 @@ package com.StudyGroup.StudyGroupCreate.APIs
 
 import com.StudyGroup.StudyGroupCreate.model.HelpPost
 import com.StudyGroup.StudyGroupCreate.service.HelpPostService
-import org.springframework.web.bind.annotation.DeleteMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.PutMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping(value = ["/api/v1/post"])
 class PostController(var helpPostService: HelpPostService) {
-
     @DeleteMapping(value = ["/{id}"])
     fun deletePost(@PathVariable(name = "id") id: String): String {
         //TODO
@@ -24,6 +17,7 @@ class PostController(var helpPostService: HelpPostService) {
         //TODO
         return this.helpPostService.updateExistingHelpPost(post);
     }
+    @CrossOrigin(origins = ["http://localhost:8080"])
     @PutMapping
     fun writeNewPost(@RequestBody post: HelpPost): HelpPost {
         //TODO
